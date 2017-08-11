@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+<a href="{% url 'agriculture:register_page' %}">注册</a>
+
+<a href="{% url 'agriculture:login_page' %}">登陆</a>
+<br/>
+
+<a href="{% url 'agriculture:edit_page' 0 %}">添加文章</a>
+<br/>
+{% for article in articles %}
+    <a href="{% url 'agriculture:article_page' article.myId %}">{{ article.title }}</a>
+    <br/>
+{% endfor %}
+
+</body>
+</html>

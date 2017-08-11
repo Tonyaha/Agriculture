@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册界面</title>
+</head>
+<body>
+<form action="{% url 'agriculture:register_response' %}" method="post"> <!-- 表单提交的目的url-->
+    {% csrf_token %}<!--post 请求的都要加上面一句 避免403错误-->
+    <label>文章标题
+        <input type="text" name="title"/>
+    </label>
+    <br/>
+    <label>文章内容
+        <input type="text" name="content"/>
+    </label>
+    <br/>
+    <input type="submit" value="提交"/>
+</form>
+</body>
+</html>

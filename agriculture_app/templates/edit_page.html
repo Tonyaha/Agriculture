@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑文章</title>
+</head>
+<body>
+<form action="{% url 'agriculture:edit_action' %}" method="post"> <!-- 表单提交的目的url 服务器通过url请求数据执行操作-->
+    {% csrf_token %}<!--post 请求的都要加上面一句 避免403错误-->
+    <input type="hidden" name="article_id" value="{{ articles.myId | default:'0' }}"/>
+    <!-- 表单提交 action 所用 （templates下）过滤器default（可叠加）-->
+    <label>文章标题
+        <input type="text" name="title" value="{{ articles.title }}"/>
+    </label>
+    <br/>
+    <label>文章内容
+        <input type="text" name="content" value="{{ articles.content }}"/>
+    </label>
+    <br/>
+    <input type="submit" value="提交"/>
+</form>
+</body>
+</html>
+
+<!--{% if articles %}
+        <input type="hidden" name="article_id" value="{{ articles.id }}"/> <!-- 表单提交 action 所用--
+        <label>文章标题
+            <input type="text" name="title" value="{{ articles.title }}"/>
+        </label>
+        <br/>
+        <label>文章内容
+            <input type="text" name="content" value="{{ articles.content }}"/>
+        </label>
+        <br/>
+    {% else %}
+        <input type="hidden" name="article_id" value="0"/>
+        <label>文章标题
+            <input type="text" name="title"/>
+        </label>
+        <br/>
+        <label>文章内容
+            <input type="text" name="content"/>
+        </label>
+        <br/>
+    {% endif %}  -->

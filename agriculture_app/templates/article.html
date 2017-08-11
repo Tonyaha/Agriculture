@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文章界面</title>
+</head>
+<body>
+<h1>{{ articles.title }}</h1>
+<h1>{{ articles.content }}</h1>
+<a href="{% url 'agriculture:edit_page' articles.myId %}">修改文章</a>
+</body>
+</html>
