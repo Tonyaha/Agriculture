@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试使用</title>
+</head>
+    <body>
+        <h1 align="center">{{ articles.title }}{{ articles.class_name }}</h1>
+        <div width="600">
+            <div width="600">
+                {% for key,value in articles.content.items %}
+                    {% if key %}
+            {#            <h1>{{ key|truncatechars:6}}</h1>#}
+            {#            <h1>{{ key|slice:":3"}}</h1>#}
+                        {% ifequal key|slice:":3" 'con' %}
+                            <p>{{ value|linebreaksbr }}</p>
+                        {% else %}
+                            <img class="st_camera" src={% static value %} width="600" height="400"/>
+                        {% endifequal %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {#<img class="st_camera" src={% static articles.content.image1 %} width="500" height="400"/>#}
+    {#<img class="st_camera" src={% static articles.content.image5 %} width="500" height="400"/>#}
+    {#<img class="st_camera" src={% static articles.content.image10 %} width="500" height="400"/>#}
+    {#<img class="st_camera" src="data:image/jpg;base64,{{ articles.content.image1 }}" width="500" height="400"/>#}
+    </body>
+</html>

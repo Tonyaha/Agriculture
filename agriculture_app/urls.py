@@ -9,8 +9,10 @@ urlpatterns = [
     url(r'^edit/(?P<page_id>[0-9]+)$', views.edit_page,name='edit_page'),
     url(r'^edit/action$', views.edit_action,name='edit_action'),
 
-    url(r'^register/$', views.register,name='register_page'),
-    url(r'^register/response$', views.register_response, name='register_response'),
+    url(r'^register/$', views.UserForm.register,name='register_page'),
+   # url(r'^register/response$', views.register_response, name='register_response'),
 
-    url(r'^login/$', views.login, name='login_page'),
+    url(r'^login/$', views.UserForm.login, name='login_page'),
+
+    url(r'^test/(?P<page_id>[0-9]+)', views.newsHandle,name='newsHandle')
 ]

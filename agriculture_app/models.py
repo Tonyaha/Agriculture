@@ -1,4 +1,3 @@
-
 # Create your models here. 一个model对应数据库一张数据表
 from django.db import models
 from mongoengine import *
@@ -6,25 +5,44 @@ from datetime import datetime
 
 # 连接数据库
 connect('Data')  # 连接本地blog数据库
-#connect('Data',host='127.0.0.1',port='27017')
+
+
+# connect('Data',host='127.0.0.1',port='27017')
 
 # 如需验证和指定主机名
 # connect('blog', host='192.168.3.1', username='root', password='1234')
 
-class user(Document):
-    userId = IntField(required=True)
+class User(Document):
+    # userId = IntField(required=True)
     # id = ObjectIdField(primary_key=True,required=True)
-    user = StringField(max_length=1000, required=True)
+    username = StringField(max_length=1000, required=True)
     password = StringField(max_length=1000, required=True)
+    email = EmailField()
 
 
 class main_data(Document):
-
     ' 继承Document类,为普通文档 '
-    myId = IntField( required=True)
-    #id = ObjectIdField(primary_key=True,required=True)
+    myId = IntField(required=True)
+    # id = ObjectIdField(primary_key=True,required=True)
     title = StringField(max_length=1000, required=True)
     content = StringField(max_length=1000, required=True)
+
+
+
+class price(Document):
+    name = StringField(required=True)
+    market = StringField(required=True)
+    date = StringField(required=True)
+    average = StringField(required=True)
+    week_price = StringField(default=None)
+
+class page(Document):
+    jieba_cut_content=StringField(default=None)
+    title = StringField(required=True)
+    content = DictField(required=True)
+    class_name = StringField(required=True)
+    pageId = IntField(required=True)
+
 
 
 

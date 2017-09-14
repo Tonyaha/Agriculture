@@ -4,18 +4,38 @@
     <meta charset="UTF-8">
     <title>首页</title>
 </head>
-<body>
+<body background="./agriculture_app/static/img/bg1.jpg">
 <a href="{% url 'agriculture:register_page' %}">注册</a>
 
 <a href="{% url 'agriculture:login_page' %}">登陆</a>
 <br/>
-
+<br/>
 <a href="{% url 'agriculture:edit_page' 0 %}">添加文章</a>
 <br/>
+{#{% for article in articles %}#}
+{#    <a href="{% url 'agriculture:article_page' article.myId %}">{{ article.title }}</a>#}
+{#    <br/>#}
+{#{% endfor %}#}
+
 {% for article in articles %}
-    <a href="{% url 'agriculture:article_page' article.myId %}">{{ article.title }}</a>
+    <a href="{% url 'agriculture:newsHandle' article.pageId %}">{{ article.title }}</a>
     <br/>
 {% endfor %}
+
+<script>(function(T,h,i,n,k,P,a,g,e){g=function(){P=h.createElement(i);a=h.getElementsByTagName(i)[0];P.src=k;P.charset="utf-8";P.async=1;a.parentNode.insertBefore(P,a)};T["ThinkPageWeatherWidgetObject"]=n;T[n]||(T[n]=function(){(T[n].q=T[n].q||[]).push(arguments)});T[n].l=+new Date();if(T.attachEvent){T.attachEvent("onload",g)}else{T.addEventListener("load",g,false)}}(window,document,"script","tpwidget","//widget.seniverse.com/widget/chameleon.js"))</script>
+<script>tpwidget("init", {
+    "flavor": "bubble",
+    "location": "WM6N2PM3WY2K",
+    "geolocation": "enabled",
+    "position": "top-right",
+    "margin": "10px 10px",
+    "language": "auto",
+    "unit": "c",
+    "theme": "chameleon",
+    "uid": "U9459CDF28",
+    "hash": "666c3f31424b28c8d9364edbc0792916"
+});
+tpwidget("show");</script>
 
 </body>
 </html>
